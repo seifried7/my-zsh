@@ -1,0 +1,84 @@
+
+# this is the alias file called aliasrc found in my setup in $HOME/.zsh/ directory 
+# this started with viewing christitustech youtube video on zsh, started with some of his basics on his github 
+# https://github.com/ChrisTitusTech/zsh then have modified for my preferences.
+
+
+# # ex - archive extractor
+# # usage: ex <file>
+# I got this function from chrisitustech.
+ex ()
+{
+  if [ -f $1 ] ; then
+    case $1 in
+      *.tar.bz2)   tar xjf $1   ;;
+      *.tar.gz)    tar xzf $1   ;;
+      *.tar.xz)    tar xJf $1   ;;
+      *.bz2)       bunzip2 $1   ;;
+      *.rar)       unrar x $1   ;;
+      *.gz)        gunzip $1    ;;
+      *.tar)       tar xf $1    ;;
+      *.tbz2)      tar xjf $1   ;;
+      *.tgz)       tar xzf $1   ;;
+      *.zip)       unzip $1     ;;
+      *.Z)         uncompress $1;;
+      *.7z)        7z x $1      ;;
+      *)           echo "'$1' cannot be extracted via ex()" ;;
+    esac
+  else
+    echo "'$1' is not a valid file"
+  fi
+}
+
+## update - checks for nala package otherwise used apt to update
+## usage: update  
+update ()
+{
+    if dpkg -s nala &> /dev/null
+then
+    echo 'updating using nala'
+    sudo nala update
+else
+    echo 'nala is not installed. Updating with apt'
+    sudo apt update
+fi 
+}
+
+## upgrade - checks for nala package otherwise used apt to upgrade
+## usage: upgrade  
+upgrade ()
+{
+    if dpkg -s nala &> /dev/null
+then
+    echo 'upgrading using nala'
+    sudo nala upgrade -y
+else
+    echo 'nala is not installed. Upgrading with apt'
+    sudo apt upgrade -y
+fi 
+}
+
+export EDITOR=nano
+
+
+#these are aliases I have added as I found use for them, some from my usage others from seeing others use them
+
+#ls alias
+alias ll='ls -AlFh --color=auto'
+alias la='ls -A --color=auto'
+ 
+#shortcuts for quick access to .zshrc and .zsh/aliasrc files
+alias zshrc='${=EDITOR} ~/.zshrc'  		   #Quick access to the ~/.zshrc file
+alias aliasrc='${=EDITOR} ~/.zsh/aliasrc'  #Quick access to the ~/.zsh/aliasrc file
+
+
+alias h='history'
+alias help='man'
+
+
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias vim='vim'
+alias vi='vim'
+

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #This is a simple shell script to install and configure zsh.  
 #This should work with debian based OS's, I am currently working with this with popOS! 22.04 LTS.
 #I will attempt to keep a list of OS versions which I have tested this on as I go
@@ -17,7 +19,7 @@ sudo apt install zsh zsh-autosuggestions zsh-syntax-highlighting autojump
 
 
 #get powerlevel10k from github and put it in the .zsh directory
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.zsh/powerlevel10k
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.zsh/powerlevel10k
 
 
 #get .zshrc and aliasrc files from the repository. adds .zshrc to HOME directory
